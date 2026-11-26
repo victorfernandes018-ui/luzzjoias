@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Luzz — Cadastro de peças</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root { --stone:#efece7; --stone-2:#e5e1da; --stone-3:#d6d1c8; --ink:#111110; --mute:#7a766f; --white:#fbfaf8; --serif:"Cormorant Garamond",serif; --sans:"Jost",sans-serif; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--sans); font-weight: 300; background: var(--stone); color: var(--ink); line-height: 1.5; }
+    header { display: flex; align-items: center; gap: 20px; padding: 22px clamp(18px, 4vw, 48px); border-bottom: 1px solid rgba(17,17,16,.1); position: sticky; top: 0; background: rgba(239,236,231,.9); backdrop-filter: blur(10px); z-index: 5; flex-wrap: wrap; }
+    .logo { font-family: var(--serif); font-size: 22px; letter-spacing: .5em; }
+    header h1 { font-family: var(--serif); font-weight: 300; font-style: italic; font-size: 20px; color: var(--mute); }
+    header .actions { margin-left: auto; display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn { font-family: var(--sans); font-size: 11px; letter-spacing: .18em; text-transform: uppercase; padding: 12px 20px; border-radius: 100px; border: 1px solid rgba(17,17,16,.25); background: transparent; color: var(--ink); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+    .btn:hover { border-color: var(--ink); }
+    .btn--dark { background: var(--ink); color: var(--stone); border-color: var(--ink); }
+    .btn--danger { color: #9b2c2c; border-color: rgba(155,44,44,.35); }
+    main { display: grid; grid-template-columns: 1.1fr 1fr; gap: clamp(20px, 3vw, 44px); padding: clamp(20px, 3vw, 44px) clamp(18px, 4vw, 48px); align-items: start; }
+    h2 { font-family: var(--serif); font-weight: 300; font-size: 34px; margin-bottom: 6px; }
+    .hint { font-size: 13.5px; color: var(--mute); margin-bottom: 22px; max-width: 560px; }
+    .steps { background: var(--white); border-radius: 6px; padding: 18px 22px; font-size: 14px; margin-bottom: 26px; }
+    .steps ol { padding-left: 18px; display: grid; gap: 4px; }
+    .steps code { background: var(--stone-2); padding: 1px 6px; border-radius: 4px; font-size: 12.5px; }
+    .list { display: grid; gap: 10px; }
+    .item { display: grid; grid-template-columns: 64px 1fr auto; gap: 16px; align-items: center; background: var(--white); padding: 10px 14px 10px 10px; border-radius: 6px; border: 1px solid transparent; cursor: pointer; transition: border-color .3s; }
+    .item:hover { border-color: rgba(17,17,16,.2); }
+    .item.is-editing { border-color: var(--ink); }
+    .item img { width: 64px; height: 78px; object-fit: cover; border-radius: 4px; background: var(--stone-3); }
+    .item__name { font-family: var(--serif); font-size: 21px; line-height: 1.1; }
+    .item__meta { font-size: 12px; color: var(--mute); }
+    .item__tools { display: flex; gap: 4px; }
+    .icon { width: 32px; height: 32px; border-radius: 50%; border: 1px solid rgba(17,17,16,.15); background: transparent; cursor: pointer; font-size: 14px; color: var(--ink); }
+    .icon:hover { border-color: var(--ink); }
+    .tag { display: inline-block; font-size: 10px; letter-spacing: .14em; text-transform: uppercase; padding: 2px 8px; border-radius: 20px; background: var(--stone-2); margin-left: 6px; vertical-align: middle; }
+    .tag--sold { background: var(--ink); color: var(--stone); }
+    form { background: var(--white); border-radius: 8px; padding: clamp(20px, 3vw, 34px); position: sticky; top: 100px; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    label { display: grid; gap: 6px; font-size: 10.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--mute); margin-bottom: 16px; }
+    input[type=text], input[type=number], textarea, select { font-family: var(--sans); font-size: 15px; font-weight: 300; color: var(--ink); background: var(--stone); border: 1px solid transparent; border-radius: 6px; padding: 11px 12px; text-transform: none; letter-spacing: 0; width: 100%; }
+    input:focus, textarea:focus, select:focus { outline: none; border-color: var(--ink); background: var(--white); }
+    textarea { resize: vertical; min-height: 80px; }
+    .mats { display: flex; flex-wrap: wrap; gap: 8px; text-transform: none; letter-spacing: 0; }
+    .mats label { display: inline-flex; align-items: center; gap: 6px; margin: 0; font-size: 14px; color: var(--ink); letter-spacing: 0; text-transform: none; background: var(--stone); padding: 8px 12px; border-radius: 100px; cursor: pointer; }
+    .check { display: flex; align-items: center; gap: 8px; text-transform: none; letter-spacing: 0; font-size: 14px; color: var(--ink); }
+    .photo { display: grid; grid-template-columns: 92px 1fr; gap: 14px; align-items: center; margin-bottom: 16px; }
+    .photo img { width: 92px; height: 112px; object-fit: cover; border-radius: 6px; background: var(--stone-3); }
+    .photo label { margin: 0; }
+    .photo small { font-size: 12px; color: var(--mute); text-transform: none; letter-spacing: 0; }
+    .form-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 6px; }
+    .toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 150%); background: var(--ink); color: var(--stone); padding: 12px 22px; border-radius: 100px; font-size: 14px; transition: transform .5s cubic-bezier(.2,.7,.1,1); z-index: 10; }
+    .toast.on { transform: translate(-50%, 0); }
+    .config { background: var(--white); border-radius: 6px; padding: 18px 22px; margin-top: 26px; }
+    .config label { margin-bottom: 0; }
+    @media (max-width: 900px) { main { grid-template-columns: 1fr; } form { position: static; } }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="logo">LUZZ</span>
+    <h1>cadastro de peças</h1>
+    <div class="actions">
+      <a class="btn" href="index.html#loja" target="_blank">Ver loja</a>
+      <button class="btn btn--dark" id="download">Baixar products.js</button>
+    </div>
+  </header>
+
+  <main>
+    <section>
+      <h2>Peças à venda</h2>
+      <p class="hint">Clique numa peça para editar. Use as setas para mudar a ordem em que aparecem na loja. As alterações ficam salvas neste navegador até você baixar o arquivo.</p>
+
+      <div class="steps">
+        <strong>Como publicar as mudanças</strong>
+        <ol>
+          <li>Coloque as fotos novas na pasta <code>images/</code> do site.</li>
+          <li>Cadastre ou edite as peças aqui.</li>
+          <li>Clique em <b>Baixar products.js</b> e substitua o arquivo <code>products.js</code> do site por ele.</li>
+        </ol>
+      </div>
+
+      <div class="list" id="list"></div>
+
+      <div class="config">
+        <label>Número do WhatsApp para pedidos (DDI + DDD + número, só números)
+          <input type="text" id="cfgWhats" placeholder="Ex: 5519999999999" inputmode="numeric" />
+        </label>
+        <p class="hint" style="margin:8px 0 0">Com o número, o pedido da sacola já chega escrito na conversa. Sem ele, o pedido é copiado e abre o link de mensagem da loja.</p>
+      </div>
+    </section>
+
+    <form id="form" autocomplete="off">
+      <h2 id="formTitle">Nova peça</h2>
+      <p class="hint">Preencha e clique em salvar.</p>
+
+      <div class="photo">
+        <img id="photoPreview" alt="" />
+        <div>
+          <label>Foto (nome do arquivo na pasta images/)
+            <input type="text" id="foto" placeholder="images/minha-peca.jpg" required />
+          </label>
+          <small>Ou escolha a foto: <input type="file" id="fotoFile" accept="image/*" /></small>
+        </div>
+      </div>
+
+      <label>Nome da peça <input type="text" id="nome" required placeholder="Ex: Brinco Ponto de Luz" /></label>
+
+      <div class="row">
+        <label>Categoria
+          <select id="categoria">
+            <option value="brincos">Brincos</option>
+            <option value="colares">Colares &amp; Riviera</option>
+            <option value="pingentes">Pingentes</option>
+            <option value="pulseiras">Pulseiras</option>
+            <option value="aneis">Anéis</option>
+            <option value="masculino">Masculino</option>
+          </select>
+        </label>
+        <label>Selo (opcional)
+          <input type="text" id="selo" list="selos" placeholder="Novo, Mais vendido…" />
+          <datalist id="selos"><option value="Novo"><option value="Mais vendido"><option value="Últimas unidades"><option value="Promoção"></datalist>
+        </label>
+      </div>
+
+      <div class="row">
+        <label>Preço (R$) — vazio = sob consulta <input type="number" id="preco" step="0.01" min="0" placeholder="Ex: 189.90" /></label>
+        <label>Preço antigo (opcional) <input type="number" id="precoAntigo" step="0.01" min="0" placeholder="Para promoção" /></label>
+      </div>
+
+      <label>Descrição <textarea id="descricao" placeholder="Conte o que torna a peça especial"></textarea></label>
+
+      <label>Materiais disponíveis
+        <div class="mats" id="mats">
+          <label><input type="checkbox" value="Prata" /> Prata</label>
+          <label><input type="checkbox" value="Banho ouro branco" /> Banho ouro branco</label>
+          <label><input type="checkbox" value="Banho ouro amarelo" /> Banho ouro amarelo</label>
+        </div>
+      </label>
+
+      <label class="check"><input type="checkbox" id="esgotado" /> Marcar como esgotado</label>
+
+      <div class="form-actions">
+        <button class="btn btn--dark" type="submit">Salvar peça</button>
+        <button class="btn" type="button" id="newBtn">Nova peça</button>
+        <button class="btn btn--danger" type="button" id="delBtn" hidden>Excluir</button>
+      </div>
+    </form>
+  </main>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="products.js"></script>
+  <script>
+  (() => {
+    const DRAFT = 'luzz-admin-rascunho';
+    const $ = id => document.getElementById(id);
+    const CATS = { brincos: 'Brincos', colares: 'Colares & Riviera', pingentes: 'Pingentes', pulseiras: 'Pulseiras', aneis: 'Anéis', masculino: 'Masculino' };
+    const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    let state;
+    try { state = JSON.parse(localStorage.getItem(DRAFT)); } catch (e) {}
+    if (!state) state = { config: { ...(window.LUZZ_CONFIG || {}) }, products: JSON.parse(JSON.stringify(window.LUZZ_PRODUCTS || [])) };
+    let editing = null;
+    const blobPreviews = {};
+
+    const persist = () => localStorage.setItem(DRAFT, JSON.stringify(state));
+    const toast = msg => { const t = $('toast'); t.textContent = msg; t.classList.add('on'); clearTimeout(t._t); t._t = setTimeout(() => t.classList.remove('on'), 2600); };
+    const money = v => (+v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+    const renderList = () => {
+      $('list').innerHTML = state.products.map((p, i) => `
+        <div class="item${editing === i ? ' is-editing' : ''}" data-i="${i}">
+          <img src="${esc(blobPreviews[p.foto] || p.foto)}" alt="" />
+          <div>
+            <div class="item__name">${esc(p.nome)}${p.selo ? `<span class="tag">${esc(p.selo)}</span>` : ''}${p.esgotado ? '<span class="tag tag--sold">esgotado</span>' : ''}</div>
+            <div class="item__meta">${esc(CATS[p.categoria] || p.categoria)} · ${p.preco != null && p.preco !== '' ? money(p.preco) : 'Sob consulta'}</div>
+          </div>
+          <div class="item__tools">
+            <button class="icon" data-up="${i}" title="Subir">↑</button>
+            <button class="icon" data-down="${i}" title="Descer">↓</button>
+          </div>
+        </div>`).join('') || '<p class="hint">Nenhuma peça ainda.</p>';
+    };
+
+    const fill = p => {
+      $('formTitle').textContent = p ? 'Editar peça' : 'Nova peça';
+      $('foto').value = p?.foto || '';
+      $('nome').value = p?.nome || '';
+      $('categoria').value = p?.categoria || 'brincos';
+      $('selo').value = p?.selo || '';
+      $('preco').value = p?.preco ?? '';
+      $('precoAntigo').value = p?.precoAntigo ?? '';
+      $('descricao').value = p?.descricao || '';
+      $('esgotado').checked = !!p?.esgotado;
+      const mats = p?.materiais || ['Prata'];
+      $('mats').querySelectorAll('input').forEach(c => c.checked = mats.includes(c.value));
+      $('delBtn').hidden = !p;
+      $('fotoFile').value = '';
+      updatePreview();
+    };
+    const updatePreview = () => { const v = $('foto').value.trim(); $('photoPreview').src = blobPreviews[v] || v || ''; };
+    $('foto').addEventListener('input', updatePreview);
+    $('fotoFile').addEventListener('change', e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const path = 'images/' + f.name;
+      blobPreviews[path] = URL.createObjectURL(f);
+      $('foto').value = path;
+      updatePreview();
+      toast('Lembre de copiar essa foto para a pasta images/');
+    });
+
+    const slug = s => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    const num = v => v === '' ? null : Math.round(parseFloat(v) * 100) / 100;
+
+    $('form').addEventListener('submit', e => {
+      e.preventDefault();
+      const p = {
+        id: editing != null ? state.products[editing].id : '',
+        nome: $('nome').value.trim(),
+        categoria: $('categoria').value,
+        preco: num($('preco').value),
+        foto: $('foto').value.trim(),
+        descricao: $('descricao').value.trim(),
+        materiais: [...$('mats').querySelectorAll('input:checked')].map(c => c.value)
+      };
+      const antigo = num($('precoAntigo').value); if (antigo != null) p.precoAntigo = antigo;
+      if ($('selo').value.trim()) p.selo = $('selo').value.trim();
+      if ($('esgotado').checked) p.esgotado = true;
+      if (!p.id) {
+        let base = slug(p.nome) || 'peca', id = base, n = 2;
+        while (state.products.some(x => x.id === id)) id = `${base}-${n++}`;
+        p.id = id;
+      }
+      if (editing != null) state.products[editing] = p; else { state.products.push(p); editing = state.products.length - 1; }
+      persist(); renderList(); $('delBtn').hidden = false; $('formTitle').textContent = 'Editar peça';
+      toast('Peça salva ✓');
+    });
+
+    $('newBtn').addEventListener('click', () => { editing = null; fill(null); renderList(); $('nome').focus(); });
+    $('delBtn').addEventListener('click', () => {
+      if (editing == null) return;
+      if (!confirm(`Excluir "${state.products[editing].nome}"?`)) return;
+      state.products.splice(editing, 1); editing = null; persist(); fill(null); renderList(); toast('Peça excluída');
+    });
+
+    $('list').addEventListener('click', e => {
+      const up = e.target.dataset.up, down = e.target.dataset.down;
+      const move = (i, d) => {
+        const j = i + d; if (j < 0 || j >= state.products.length) return;
+        [state.products[i], state.products[j]] = [state.products[j], state.products[i]];
+        if (editing === i) editing = j; else if (editing === j) editing = i;
+        persist(); renderList();
+      };
+      if (up != null) return move(+up, -1);
+      if (down != null) return move(+down, 1);
+      const item = e.target.closest('.item');
+      if (item) { editing = +item.dataset.i; fill(state.products[editing]); renderList(); }
+    });
+
+    $('cfgWhats').value = state.config.whatsapp || '';
+    $('cfgWhats').addEventListener('input', e => { state.config.whatsapp = e.target.value.replace(/\D/g, ''); persist(); });
+
+    $('download').addEventListener('click', () => {
+      const header = `/* =====================================================
+   LUZZ — CATÁLOGO DE PEÇAS
+   Gerado pela página admin.html em ${new Date().toLocaleString('pt-BR')}.
+   Para editar, abra admin.html ou altere os campos abaixo.
+   categoria: brincos | colares | pingentes | pulseiras | aneis | masculino
+   preco: número ou null para "Sob consulta"
+   ===================================================== */\n\n`;
+      const cfg = { whatsapp: state.config.whatsapp || '', whatsappLink: state.config.whatsappLink || 'https://wa.me/message/NUPQV2P2MQB6P1' };
+      const content = header + 'window.LUZZ_CONFIG = ' + JSON.stringify(cfg, null, 2) + ';\n\nwindow.LUZZ_PRODUCTS = ' + JSON.stringify(state.products, null, 2) + ';\n';
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([content], { type: 'text/javascript' }));
+      a.download = 'products.js';
+      a.click();
+      toast('Arquivo baixado — substitua o products.js do site');
+    });
+
+    fill(null); renderList();
+  })();
+  </script>
+</body>
+</html>

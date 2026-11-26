@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luzz Joias — Moissanites, Prata & Banho de Ouro</title>
+  <meta name="description" content="Luzz Joias — Moissanites, prata e banho de ouro branco & amarelo. Atendimento VIP em Campinas, Tietê e Laranjal Paulista. Since 2020." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Símbolos reutilizáveis -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <symbol id="sparkle" viewBox="0 0 24 24">
+        <path d="M12 0C12.6 7 17 11.4 24 12C17 12.6 12.6 17 12 24C11.4 17 7 12.6 0 12C7 11.4 11.4 7 12 0Z" fill="currentColor"/>
+      </symbol>
+      <linearGradient id="silver" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#8d8d8d"/>
+        <stop offset=".45" stop-color="#e9e9e9"/>
+        <stop offset=".6" stop-color="#ffffff"/>
+        <stop offset="1" stop-color="#7a7a7a"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- Loader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <svg class="loader__gem" viewBox="0 0 200 190">
+        <g class="draw" fill="none" stroke="currentColor" stroke-width="1">
+          <path d="M20 70 L60 38 L140 38 L180 70 L100 180 Z"/>
+          <path d="M20 70 H180"/>
+          <path d="M60 38 L45 70 M60 38 L80 70 M100 38 L80 70 M100 38 L120 70 M140 38 L120 70 M140 38 L155 70"/>
+          <path d="M45 70 L100 180 M80 70 L100 180 M120 70 L100 180 M155 70 L100 180"/>
+        </g>
+      </svg>
+      <div class="loader__word"><span>L</span><span>U</span><span>Z</span><span>Z</span></div>
+    </div>
+  </div>
+
+  <!-- Cursor brilho -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
+  <!-- Header -->
+  <header class="header" id="header">
+    <a href="#inicio" class="logo" aria-label="Luzz — início">
+      L<span class="logo__u">U</span>ZZ
+      <svg class="logo__spark"><use href="#sparkle"/></svg>
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#sobre">A Luzz</a>
+      <a href="#colecoes">Coleções</a>
+      <a href="#loja">Loja</a>
+      <a href="#moissanite">Moissanite</a>
+      <a href="#momento">#momentoluzz</a>
+      <a href="#atendimento">Atendimento</a>
+    </nav>
+    <a class="btn btn--ghost header__cta" href="https://wa.me/message/NUPQV2P2MQB6P1" target="_blank" rel="noopener">WhatsApp</a>
+    <button class="cart-btn" id="cartBtn" aria-label="Abrir sacola">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><path d="M5 8h14l-1.2 12.2a1 1 0 0 1-1 .8H7.2a1 1 0 0 1-1-.8L5 8Z"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8"/></svg>
+      <span class="cart-btn__count" id="cartCount">0</span>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menu"><span></span><span></span></button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="hero__sparkles" aria-hidden="true">
+        <svg style="--x:8%;--y:22%;--s:14px;--d:0s"><use href="#sparkle"/></svg>
+        <svg style="--x:46%;--y:12%;--s:10px;--d:1.2s"><use href="#sparkle"/></svg>
+        <svg style="--x:38%;--y:82%;--s:18px;--d:.6s"><use href="#sparkle"/></svg>
+        <svg style="--x:92%;--y:18%;--s:12px;--d:2s"><use href="#sparkle"/></svg>
+        <svg style="--x:88%;--y:86%;--s:9px;--d:1.6s"><use href="#sparkle"/></svg>
+        <svg style="--x:4%;--y:70%;--s:8px;--d:2.4s"><use href="#sparkle"/></svg>
+      </div>
+
+      <!-- colar riviera ilustrado -->
+      <svg class="hero__chain" viewBox="0 0 1440 400" preserveAspectRatio="none" aria-hidden="true">
+        <path class="chain chain--line" d="M-20 60 C 260 360, 620 380, 820 250 S 1200 40, 1460 140"/>
+        <path class="chain chain--beads" d="M-20 60 C 260 360, 620 380, 820 250 S 1200 40, 1460 140"/>
+      </svg>
+
+      <div class="hero__text">
+        <p class="eyebrow reveal">Since 2020 · Moissanites & Prata</p>
+        <h1 class="hero__title">
+          <span class="line"><span>A luz</span></span>
+          <span class="line"><span><em>que nasce</em></span></span>
+          <span class="line"><span>das estrelas.</span></span>
+        </h1>
+        <p class="hero__lead reveal">Joias em moissanite, prata e banho de ouro branco &amp; amarelo — feitas para brilhar no seu dia a dia e nos seus grandes momentos.</p>
+        <div class="hero__actions reveal">
+          <a class="btn btn--dark" href="https://wa.me/message/NUPQV2P2MQB6P1" target="_blank" rel="noopener">
+            Comece seu carrinho
+            <svg class="btn__spark"><use href="#sparkle"/></svg>
+          </a>
+          <a class="link-arrow" href="#colecoes">Ver coleções <span>→</span></a>
+        </div>
+      </div>
+
+      <div class="hero__media">
+        <figure class="arch arch--main" data-parallax="0.06">
+          <img src="images/anel-riviera.jpg" alt="Anel solitário de moissanite e colares riviera em prata sobre bandeja de pedra" />
+        </figure>
+        <figure class="bubble" data-parallax="-0.1">
+          <img src="images/brincos-mao.jpg" alt="Brincos ponto de luz em moissanite na mão" />
+        </figure>
+        <svg class="hero__gem" viewBox="0 0 200 190" data-parallax="0.16" aria-hidden="true">
+          <g fill="none" stroke="currentColor" stroke-width="1">
+            <path d="M20 70 L60 38 L140 38 L180 70 L100 180 Z"/>
+            <path d="M20 70 H180"/>
+            <path d="M60 38 L45 70 M60 38 L80 70 M100 38 L80 70 M100 38 L120 70 M140 38 L120 70 M140 38 L155 70"/>
+            <path d="M45 70 L100 180 M80 70 L100 180 M120 70 L100 180 M155 70 L100 180"/>
+          </g>
+        </svg>
+        <div class="hero__tag" data-parallax="-0.05">
+          <span>Moissanite</span>
+          <strong>9,25</strong>
+          <span>na escala Mohs</span>
+        </div>
+      </div>
+
+      <a href="#sobre" class="scroll-hint" aria-label="Rolar para baixo">
+        <span>role</span><i></i>
+      </a>
+    </section>
+
+    <!-- MARQUEE -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>Moissanite</span><svg><use href="#sparkle"/></svg>
+        <span><em>Prata</em></span><svg><use href="#sparkle"/></svg>
+        <span>Banho ouro branco</span><svg><use href="#sparkle"/></svg>
+        <span><em>Banho ouro amarelo</em></span><svg><use href="#sparkle"/></svg>
+        <span>Atendimento VIP</span><svg><use href="#sparkle"/></svg>
+        <span>Moissanite</span><svg><use href="#sparkle"/></svg>
+        <span><em>Prata</em></span><svg><use href="#sparkle"/></svg>
+        <span>Banho ouro branco</span><svg><use href="#sparkle"/></svg>
+        <span><em>Banho ouro amarelo</em></span><svg><use href="#sparkle"/></svg>
+        <span>Atendimento VIP</span><svg><use href="#sparkle"/></svg>
+      </div>
+    </div>
+
+    <!-- SOBRE -->
+    <section class="about section" id="sobre">
+      <div class="about__illus" aria-hidden="true">
+        <svg viewBox="0 0 320 360" class="ring-illus">
+          <g fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round">
+            <!-- aro -->
+            <ellipse class="draw-on-scroll" cx="160" cy="240" rx="110" ry="90"/>
+            <ellipse class="draw-on-scroll" cx="160" cy="240" rx="98" ry="79"/>
+            <!-- garras -->
+            <path class="draw-on-scroll" d="M128 152 L134 118 M192 152 L186 118 M146 150 L144 106 M174 150 L176 106"/>
+            <!-- pedra -->
+            <path class="draw-on-scroll" d="M112 118 L136 94 L184 94 L208 118 L160 176 Z"/>
+            <path class="draw-on-scroll" d="M112 118 H208 M136 94 L126 118 M136 94 L148 118 M160 94 L148 118 M160 94 L172 118 M184 94 L172 118 M184 94 L194 118 M126 118 L160 176 M148 118 L160 176 M172 118 L160 176 M194 118 L160 176"/>
+          </g>
+          <g class="twinkle-group" fill="currentColor">
+            <use href="#sparkle" x="216" y="60" width="22" height="22"/>
+            <use href="#sparkle" x="88" y="78" width="12" height="12"/>
+            <use href="#sparkle" x="236" y="128" width="10" height="10"/>
+          </g>
+        </svg>
+      </div>
+
+      <div class="about__text">
+        <p class="eyebrow reveal">A Luzz</p>
+        <h2 class="title reveal">Joias que guardam <em>luz</em><br/>e contam a sua história.</h2>
+        <p class="reveal">Desde 2020, a Luzz escolhe cada peça pensando em quem vai usá-la: o ponto de luz que vira assinatura, a riviera que acompanha o brinde, o anel que marca um “sim”. Trabalhamos com moissanites, prata e banho de ouro branco e amarelo — brilho de alta joalheria com delicadeza para o dia a dia.</p>
+        <ul class="about__stats reveal">
+          <li><strong data-count="2020">2020</strong><span>desde</span></li>
+          <li><strong>3</strong><span>cidades atendidas</span></li>
+          <li><strong>VIP</strong><span>atendimento até você</span></li>
+        </ul>
+      </div>
+
+      <figure class="about__photo reveal-img">
+        <img src="images/modelo-blazer.jpg" alt="Modelo usando colares em moissanite negra e prata" loading="lazy" />
+        <figcaption>#momentoluzz</figcaption>
+      </figure>
+    </section>
+
+    <!-- COLEÇÕES -->
+    <section class="collections section" id="colecoes">
+      <div class="section__head">
+        <p class="eyebrow reveal">Coleções</p>
+        <h2 class="title reveal">Escolha o seu <em>brilho</em></h2>
+      </div>
+
+      <div class="collections__grid">
+        <a class="card reveal-card" href="#loja" data-filter-link="brincos">
+          <div class="card__img"><img src="images/brincos-pedra.jpg" alt="Brincos ponto de luz em moissanite" loading="lazy" /></div>
+          <div class="card__body"><span class="card__num">01</span><h3>Brincos</h3><p>Pontos de luz, coroas e cravejados.</p></div>
+        </a>
+        <a class="card reveal-card" href="#loja" data-filter-link="colares">
+          <div class="card__img"><img src="images/correntes.jpg" alt="Colares riviera em prata" loading="lazy" /></div>
+          <div class="card__body"><span class="card__num">02</span><h3>Colares &amp; Riviera</h3><p>Rivieras, gargantilhas e pingentes.</p></div>
+        </a>
+        <a class="card reveal-card" href="#loja" data-filter-link="pingentes">
+          <div class="card__img"><img src="images/medalha.jpg" alt="Colar com medalha cravejada" loading="lazy" /></div>
+          <div class="card__body"><span class="card__num">03</span><h3>Pingentes</h3><p>Medalhas e peças com significado.</p></div>
+        </a>
+        <a class="card reveal-card" href="#loja" data-filter-link="pulseiras">
+          <div class="card__img"><img src="images/paris.jpg" alt="Pulseira riviera com a Torre Eiffel ao fundo" loading="lazy" /></div>
+          <div class="card__body"><span class="card__num">04</span><h3>Pulseiras</h3><p>Riviera e pulseira ping.</p></div>
+        </a>
+      </div>
+
+      <div class="collections__more reveal">
+        <span>Também temos linha <em>masculina</em> e peças para presentear.</span>
+        <a class="link-arrow" href="#loja">Ver todas as peças <span>→</span></a>
+      </div>
+    </section>
+
+
+    <!-- LOJA -->
+    <section class="shop section" id="loja">
+      <div class="section__head section__head--row">
+        <div>
+          <p class="eyebrow reveal">Loja</p>
+          <h2 class="title reveal">Peças à <em>venda</em></h2>
+        </div>
+        <p class="shop__note reveal">Escolha suas peças, monte a sacola e finalize com a gente pelo WhatsApp.</p>
+      </div>
+
+      <div class="shop__filters reveal" id="shopFilters" role="tablist" aria-label="Filtrar por categoria"></div>
+      <div class="shop__grid" id="shopGrid"></div>
+      <p class="shop__empty" id="shopEmpty" hidden>Em breve, novas peças nesta categoria. <a href="https://wa.me/message/NUPQV2P2MQB6P1" target="_blank" rel="noopener">Pergunte no WhatsApp →</a></p>
+    </section>
+
+    <!-- MOISSANITE -->
+    <section class="moissanite" id="moissanite">
+      <div class="moissanite__stars" id="stars" aria-hidden="true"></div>
+
+      <div class="moissanite__inner">
+        <div class="moissanite__head">
+          <p class="eyebrow eyebrow--light reveal">Por que moissanite?</p>
+          <h2 class="title title--light reveal">Uma pedra que veio<br/><em>do céu.</em></h2>
+          <p class="reveal">Em 1893, o cientista Henri Moissan encontrou cristais brilhantes em uma cratera de meteorito no Arizona. Hoje, a moissanite é criada em laboratório — com o mesmo fogo e brilho daquela descoberta.</p>
+        </div>
+
+        <div class="gem-stage" aria-hidden="true">
+          <svg viewBox="-20 -20 240 230" class="gem-big">
+            <g fill="none" stroke="url(#silver)" stroke-width="1">
+              <path class="draw-on-scroll" d="M20 70 L60 38 L140 38 L180 70 L100 180 Z"/>
+              <path class="draw-on-scroll" d="M20 70 H180"/>
+              <path class="draw-on-scroll" d="M60 38 L45 70 M60 38 L80 70 M100 38 L80 70 M100 38 L120 70 M140 38 L120 70 M140 38 L155 70"/>
+              <path class="draw-on-scroll" d="M45 70 L100 180 M80 70 L100 180 M120 70 L100 180 M155 70 L100 180"/>
+            </g>
+            <g class="rays" stroke="#fff" stroke-width=".6" opacity=".55">
+              <line x1="100" y1="10" x2="100" y2="-14"/>
+              <line x1="170" y1="30" x2="188" y2="14"/>
+              <line x1="30" y1="30" x2="12" y2="14"/>
+            </g>
+          </svg>
+          <div class="gem-glow"></div>
+        </div>
+
+        <div class="facts">
+          <article class="fact reveal-card">
+            <span class="fact__icon"><svg><use href="#sparkle"/></svg></span>
+            <h3>Mais brilho</h3>
+            <p>Índice de refração de <strong>2,65</strong> — maior que o do diamante (2,42). Resultado: um fogo colorido inconfundível.</p>
+          </article>
+          <article class="fact reveal-card">
+            <span class="fact__icon"><svg><use href="#sparkle"/></svg></span>
+            <h3>Resistência</h3>
+            <p>Dureza <strong>9,25</strong> na escala Mohs, logo abaixo do diamante. Feita para o uso diário, sem perder o brilho.</p>
+          </article>
+          <article class="fact reveal-card">
+            <span class="fact__icon"><svg><use href="#sparkle"/></svg></span>
+            <h3>Escolha consciente</h3>
+            <p>Criada em laboratório, sem mineração. Luxo acessível, com brilho de alta joalheria.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOMENTO LUZZ -->
+    <section class="moment section" id="momento">
+      <div class="section__head section__head--row">
+        <div>
+          <p class="eyebrow reveal">No Instagram</p>
+          <h2 class="title reveal"><em>#momento</em>luzz</h2>
+        </div>
+        <a class="link-arrow reveal" href="https://www.instagram.com/luzzjoias/" target="_blank" rel="noopener">@luzzjoias <span>→</span></a>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <figure class="g g--tall reveal-img"><img src="images/modelo-oculos.jpg" alt="Modelo com colares de prata e bolsa metalizada" loading="lazy" /></figure>
+        <figure class="g reveal-img"><img src="images/colar-negro.jpg" alt="Colares com moissanite negra" loading="lazy" /></figure>
+        <figure class="g g--tall reveal-img"><img src="images/modelo-loira.jpg" alt="Modelo com colar e pulseira riviera" loading="lazy" /></figure>
+        <figure class="g reveal-img"><img src="images/brincos-coroa.jpg" alt="Brincos coroa cravejados" loading="lazy" /></figure>
+        <figure class="g g--tall reveal-img"><img src="images/modelo-colo.jpg" alt="Detalhe de colares no colo" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <!-- ATENDIMENTO -->
+    <section class="service section" id="atendimento">
+      <div class="service__text">
+        <p class="eyebrow reveal">Atendimento VIP</p>
+        <h2 class="title reveal">Levamos a Luzz<br/><em>até você.</em></h2>
+        <p class="reveal">Escolha as peças pelo WhatsApp, receba fotos e vídeos reais e, se preferir, experimente com a gente pessoalmente. Atendemos em Campinas, Tietê e Laranjal Paulista.</p>
+
+        <ol class="steps reveal">
+          <li><span>01</span>Chame no WhatsApp e conte o que procura</li>
+          <li><span>02</span>Receba uma curadoria com fotos e vídeos</li>
+          <li><span>03</span>Combine a entrega ou o atendimento presencial</li>
+        </ol>
+      </div>
+
+      <div class="map" aria-label="Cidades atendidas: Campinas, Tietê e Laranjal Paulista">
+        <svg viewBox="0 0 460 380" class="map__svg">
+          <defs>
+            <pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse">
+              <circle cx="2" cy="2" r="1" fill="currentColor" opacity=".18"/>
+            </pattern>
+          </defs>
+          <rect width="460" height="380" fill="url(#dots)"/>
+          <path class="route draw-on-scroll" d="M90 250 C 150 180, 200 300, 250 230 S 340 90, 380 120" fill="none" stroke="currentColor" stroke-width="1.2" stroke-dasharray="1 0"/>
+          <g class="pin" style="--d:.2s"><circle cx="90" cy="250" r="16" class="pin__halo"/><circle cx="90" cy="250" r="5"/><text x="90" y="290">Laranjal Pta</text></g>
+          <g class="pin" style="--d:.6s"><circle cx="250" cy="230" r="16" class="pin__halo"/><circle cx="250" cy="230" r="5"/><text x="250" y="270">Tietê</text></g>
+          <g class="pin" style="--d:1s"><circle cx="380" cy="120" r="16" class="pin__halo"/><circle cx="380" cy="120" r="5"/><text x="380" y="92">Campinas</text></g>
+          <use href="#sparkle" x="404" y="60" width="16" height="16" class="map__spark"/>
+        </svg>
+        <figure class="map__photo reveal-img">
+          <img src="images/brincos-mao.jpg" alt="Brincos de moissanite na palma da mão" loading="lazy" />
+        </figure>
+      </div>
+    </section>
+
+    <!-- CUIDADOS -->
+    <section class="care section">
+      <div class="section__head">
+        <p class="eyebrow reveal">Cuidados</p>
+        <h2 class="title reveal">Para o brilho <em>durar</em></h2>
+      </div>
+      <div class="care__list">
+        <details class="reveal" open>
+          <summary>Como guardar minhas joias?<span></span></summary>
+          <p>Guarde cada peça separada, em saquinho ou caixinha, longe da umidade. Isso evita riscos e preserva o acabamento da prata e do banho.</p>
+        </details>
+        <details class="reveal">
+          <summary>Como limpar a moissanite?<span></span></summary>
+          <p>Água morna, sabão neutro e uma escovinha macia. Seque com um pano de microfibra — o brilho volta na hora.</p>
+        </details>
+        <details class="reveal">
+          <summary>Posso usar na praia ou piscina?<span></span></summary>
+          <p>Evite contato com cloro, água do mar, perfumes e cremes. Coloque as joias por último e tire primeiro.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="cta" id="contato">
+      <svg class="cta__chain" viewBox="0 0 1440 300" preserveAspectRatio="none" aria-hidden="true">
+        <path class="chain chain--beads chain--light" d="M-20 40 C 300 280, 700 300, 900 160 S 1250 20, 1460 120"/>
+      </svg>
+      <div class="cta__inner">
+        <svg class="cta__spark"><use href="#sparkle"/></svg>
+        <h2 class="title title--light reveal">Comece seu <em>carrinho.</em></h2>
+        <p class="reveal">Fale com a gente e encontre a joia que tem a sua luz.</p>
+        <div class="cta__actions reveal">
+          <a class="btn btn--light" href="https://wa.me/message/NUPQV2P2MQB6P1" target="_blank" rel="noopener">Chamar no WhatsApp <svg class="btn__spark"><use href="#sparkle"/></svg></a>
+          <a class="btn btn--ghost-light" href="https://www.instagram.com/luzzjoias/" target="_blank" rel="noopener">Seguir @luzzjoias</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__logo">LUZZ</div>
+    <p>Moissanites · Prata · (Banho) ouro branco &amp; amarelo</p>
+    <p>Campinas-SP · Tietê-SP · Laranjal Paulista-SP</p>
+    <p class="footer__small">Since 2020 · © <span id="year"></span> Luzz Joias</p>
+  </footer>
+
+
+  <!-- Detalhe da peça -->
+  <div class="modal" id="productModal" aria-hidden="true">
+    <div class="modal__backdrop" data-close></div>
+    <div class="modal__panel" role="dialog" aria-modal="true" aria-labelledby="pmName">
+      <button class="icon-close" data-close aria-label="Fechar">×</button>
+      <figure class="modal__img"><img id="pmImg" alt="" /></figure>
+      <div class="modal__info">
+        <p class="eyebrow" id="pmCat"></p>
+        <h3 id="pmName"></h3>
+        <p class="modal__price" id="pmPrice"></p>
+        <p class="modal__desc" id="pmDesc"></p>
+        <div class="field" id="pmMatWrap">
+          <span class="field__label">Material</span>
+          <div class="chips" id="pmMats"></div>
+        </div>
+        <div class="field">
+          <span class="field__label">Quantidade</span>
+          <div class="qty"><button type="button" id="pmMinus" aria-label="Diminuir">−</button><span id="pmQty">1</span><button type="button" id="pmPlus" aria-label="Aumentar">+</button></div>
+        </div>
+        <button class="btn btn--dark btn--block" id="pmAdd">Adicionar à sacola <svg class="btn__spark"><use href="#sparkle"/></svg></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sacola -->
+  <aside class="drawer" id="cartDrawer" aria-hidden="true">
+    <div class="drawer__backdrop" data-close-cart></div>
+    <div class="drawer__panel" role="dialog" aria-modal="true" aria-label="Sacola">
+      <div class="drawer__head">
+        <h3>Sua sacola</h3>
+        <button class="icon-close" data-close-cart aria-label="Fechar">×</button>
+      </div>
+      <div class="drawer__items" id="cartItems"></div>
+      <div class="drawer__empty" id="cartEmpty">
+        <svg><use href="#sparkle"/></svg>
+        <p>Sua sacola está vazia.</p>
+        <a href="#loja" class="link-arrow" data-close-cart>Ver peças <span>→</span></a>
+      </div>
+      <div class="drawer__foot" id="cartFoot">
+        <div class="drawer__total"><span>Total</span><strong id="cartTotal"></strong></div>
+        <p class="drawer__hint" id="cartHint"></p>
+        <button class="btn btn--dark btn--block" id="checkoutBtn">Finalizar pelo WhatsApp <svg class="btn__spark"><use href="#sparkle"/></svg></button>
+      </div>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="products.js"></script>
+  <script src="script.js"></script>
+  <script src="shop.js"></script>
+</body>
+</html>
